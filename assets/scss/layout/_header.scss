@@ -1,0 +1,331 @@
+header {
+  .navbar {
+    background: $color-white;
+    box-shadow: $box-shadow-14;
+    padding-bottom: 0;
+    padding-top: 0;
+
+    .navbar-brand {
+      margin: 0;
+      padding: 0;
+    }
+  }
+
+  .nav-item {
+    position: relative;
+
+    .nav-link {
+      font-style: normal;
+      font-weight: $font-weight-regular;
+      font-size: $font-size-body;
+      line-height: 1.188rem;
+      padding: 0 !important;
+      margin: 0;
+      font-family: $highlight-font-family;
+
+      .nav-text {
+        display: block;
+        position: relative;
+        cursor: pointer;
+        max-width: 100%;
+        color: $global-font-color;
+        font-family: $highlight-font-family !important;
+        font-weight: $font-weight-bold;
+        margin-bottom: 0;
+        padding: 1.188rem 0.625rem !important;
+
+        &:before {
+          content: "";
+          display: block;
+          position: absolute;
+          left: 0;
+          bottom: 0.625rem;
+          height: 0.125rem;
+          width: 0;
+          transition: width 0s ease, background 0.5s ease;
+        }
+
+        &:after {
+          content: "";
+          display: block;
+          position: absolute;
+          right: 0;
+          bottom: 0.625rem;
+          height: 0.125rem;
+          width: 0;
+          background: $primary-color;
+          transition: width 0.5s ease;
+        }
+      }
+    }
+  }
+
+  .nav-text:hover,
+  .nav-link.active .nav-text {
+    color: $primary-color;
+  }
+
+  .nav-link:hover .nav-text:before,
+  .nav-link.active .nav-text:before {
+    width: 100%;
+    background: $primary-color;
+    transition: width 0.5s ease;
+    height: 0.125rem;
+  }
+
+  .nav-link:hover .nav-text:after {
+    width: 100%;
+    background: transparent;
+    transition: all 0s ease;
+    height: 0.125rem;
+  }
+
+  .profile-dropdown {
+    width: 12.5rem;
+    position: relative;
+    right: 0;
+    left: unset !important;
+    top: 100% !important;
+    padding: 1.25rem 0 0 0;
+    box-shadow: 0.625rem 0.625rem 3.125rem rgb(0 0 0 / 5%);
+    background: $color-white;
+    border: none;
+    z-index: 999;
+
+    .nav-link {
+      padding: unset;
+
+      .nav-text {
+        padding: unset;
+      }
+    }
+
+    figure {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .profile-img {
+        width: 2.5rem;
+        height: 2.5rem;
+        border-radius: 50%;
+        text-align: center;
+      }
+    }
+
+    @media (max-width:48rem) {
+      width: 100%;
+    }
+  }
+}
+
+.color-primary {
+  color: $primary-color;
+}
+
+@media (max-width:61.938rem) {
+  .navbar-collapse {
+    position: absolute;
+    top: 100%;
+    width: 100%;
+    left: 0;
+    background: $color-white;
+    z-index: 999;
+
+    .navbar-nav {
+      position: absolute;
+      top: 100%;
+      width: 100%;
+      left: 0;
+      background: $color-white;
+      padding: 0 0 2rem 0;
+
+      .nav-item {
+        width: 100%;
+        position: relative;
+        transition: all .3s ease-in-out;
+        -moz-transition: all .3s ease-in-out;
+        -ms-transition: all .3s ease-in-out;
+        -o-transition: all .3s ease-in-out;
+        -webkit-transition: all .3s ease-in-out;
+
+        .nav-text {
+          display: inline-block;
+          padding: 0.625rem 1.25rem;
+          white-space: nowrap;
+        }
+        .dropdown {
+          .nav-link {
+            text-align: start !important;
+            display: flex;
+            justify-content: start;
+
+            span {
+              text-align: start;
+            }
+          }
+        }
+
+        .nav-icon {
+          margin-right: 0.625rem;
+        }
+
+        .nav-text:before {
+          content: "";
+          display: unset;
+          position: unset;
+          left: unset;
+          bottom: unset;
+          height: unset;
+          width: unset;
+          transition: unset;
+        }
+
+        .nav-text:after {
+          content: "";
+          display: unset;
+          position: unset;
+          right: unset;
+          bottom: unset;
+          height: unset;
+          width: unset;
+          background: unset;
+          transition: unset;
+        }
+      }
+
+      ul.sub-menu {
+        padding: 1em 0;
+        background: $color-white;
+        width: 18.75em;
+        border-top: 0.1875em solid $primary-color;
+        box-shadow: $box-shadow-13;
+        z-index: 999999;
+      }
+
+      ul.sub-menu a {
+        padding: 0.625em 1.563em;
+        color: var(--global-font-color);
+        position: relative;
+      }
+    }
+  }
+}
+
+li ul.sub-menu {
+  display: none;
+}
+
+ul.sub-menu {
+  padding: 0;
+  top: 100%;
+  -webkit-box-shadow: $box-shadow-13;
+  box-shadow: $box-shadow-13;
+  width: 18.75em;
+  position: absolute;
+  min-width: 13.75rem;
+  height: max-content;
+  background: $color-white;
+  width: max-content;
+  z-index: 999;
+}
+
+li:hover .sub-menu {
+  display: block;
+  position: absolute;
+  top: 100%;
+  bottom: 0;
+  left: 0;
+
+  .nav-item {
+    &:hover {
+      .nav-link :hover {
+        box-shadow: $box-shadow-13;
+      }
+    }
+  }
+}
+
+ul li.nav-item:hover>ul.sub-menu {
+  display: block;
+}
+
+.nav-item:hover>.sub-menu>.nav-item>ul.submenu {
+  display: none;
+}
+
+.nav-item:hover .sub-menu .nav-item:hover ul.submenu {
+  display: block;
+}
+
+.navbar-nav>li.nav-item>ul ul {
+  display: none;
+  top: 0;
+  margin: 0 0 0 0.15em;
+  left: 100%;
+  right: 100%;
+}
+
+.navbar-nav ul li ul {
+  top: 0;
+  left: 100%;
+  right: 100%;
+}
+
+.navbar-nav ul li:hover ul {
+  top: 0;
+  left: 100%;
+  right: 100%;
+}
+
+// header sticky
+.sticky {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  width: 100%;
+  box-shadow: $box-shadow-15;
+}
+
+.sub-menu .nav-item .nav-link .nav-text {
+  padding: 0.938rem 0.625rem !important;
+}
+
+ul>li.active>.nav-link>.nav-text .navbar .navbar-nav.nav-item.active>.nav-link>.nav-text {
+  color: $primary-color !important;
+}
+
+.navbar .navbar-nav .nav-item.active>.nav-link>.nav-text::before,
+.navbar .navbar-nav .nav-item.active>.nav-link>.nav-text::after {
+  width: 100%;
+  background: $primary-color;
+  transition: width 0.5s ease;
+  height: 0.125rem;
+}
+
+.nav-text:hover,
+.nav-link.active .nav-text {
+  color: $primary-color;
+}
+
+.nav-link:hover .nav-text:before,
+.nav-link.active .nav-text:before {
+  width: 100%;
+  background: $primary-color;
+  transition: width 0.5s ease;
+  height: 0.125rem;
+}
+
+.nav-link:hover .nav-text:after {
+  width: 100%;
+  background: transparent;
+  transition: all 0s ease;
+  height: 0.125rem;
+}
+
+@media (max-width:61.938rem) {
+  .nav-text-icon {
+    padding: 0.625rem;
+  }
+}
